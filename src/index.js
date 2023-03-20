@@ -2,6 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // your code here
   document.getElementById(`create-task-form`).addEventListener('submit', (e)=>{
     e.preventDefault();
+    e.stopImmediatePropagation();
     addItem(e.target['new-task-description'].value); 
   });
 
@@ -13,7 +14,7 @@ function addItem(newItem){
   newBtn.textContent = "x";
   newBtn.addEventListener('click', handleDelete);
   newLi.appendChild(newBtn);
-  document.getElementById('tasks').appendChild(newLi);
+  document.querySelector('#tasks').appendChild(newLi);
 }
 function handleDelete(e){
   e.target.parentNode.remove();
